@@ -474,6 +474,21 @@ void KgPanel::setupPanelTab()
 
     panelGrid->addWidget(sortSett, 6, 0, 1, 2);
 
+    panelGrid->addWidget(createLine(panelGrp), 7, 0);
+    // ------------------------ Date Format String ----------------------------------
+    hbox = new QHBoxLayout();
+    QLabel *dateFormatStringLabel = new QLabel(i18n("Date Format String:"),panelGrp);
+    hbox->addWidget(dateFormatStringLabel);
+
+    QString toolTip = i18n("Format string used in panel date display (create date, modified date, etc.)"
+                           "If empty will use default qt locale formating."
+                           "example format string: 'yyyy-MM-dd hh:mm:ss'"
+                           "use a single quote \' for literal string.");
+
+    KonfiguratorEditBox *dateFormatStringEditBox = createEditBox("Look&Feel", "Date Format String", "",
+                                                          dateFormatStringLabel, panelGrp, true, toolTip);
+    hbox->addWidget(dateFormatStringEditBox);
+    panelGrid->addLayout(hbox, 8, 0);
 
     // ----------------------------------------------------------------------------------
     //  ---------------------------- View modes -----------------------------------------

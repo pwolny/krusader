@@ -91,7 +91,7 @@ private:
     void updateIndices(FileItem *file, int index);
     QString toolTipText(FileItem *fileItem) const;
     static QString dateText(time_t time);
-
+    static QString                     _DateFormatString;
     QList<FileItem*>               _fileItems;
     QHash<FileItem *, QModelIndex> _fileItemNdx;
     QHash<QString, QModelIndex> _nameNdx;

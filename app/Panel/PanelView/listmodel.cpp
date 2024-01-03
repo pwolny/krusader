@@ -25,6 +25,7 @@ ListModel::ListModel(KrInterView *view)
 {
     KConfigGroup grpSvr(krConfig, "Look&Feel");
     _defaultFont = grpSvr.readEntry("Filelist Font", _FilelistFont);
+    _DateFormatString = grpSvr.readEntry("Date Format String", _DateFormatStringDefault);
 }
 
 void ListModel::populate(const QList<FileItem *> &files, FileItem *dummy)
@@ -502,6 +503,8 @@ QString ListModel::toolTipText(FileItem *fileItem) const
     return text;
 }
 
+QString ListModel::_DateFormatString;
+
 QString ListModel::dateText(time_t time)
 {
     if (time == -1) {
@@ -512,5 +515,11 @@ QString ListModel::dateText(time_t time)
 
     const QDateTime dateTime(QDate(t->tm_year + 1900, t->tm_mon + 1, t->tm_mday),
                              QTime(t->tm_hour, t->tm_min));
-    return QLocale().toString(dateTime, QLocale::ShortFormat);
+
+    if((_DateFormatString.isEmpty())==false)
+        return QLocale().toString(dateTime,_DateFormatString); //return dateTime.toString("yyyy-MM-dd hh:mm:ss");
+        //return dateTime.toString(_DateFormatString); //return dateTime.toString("yyyy-MM-dd hh:mm:ss");
+    else
+        return QLocale().toString(dateTime, QLocale::ShortFormat);
+
 }

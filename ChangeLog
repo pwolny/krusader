@@ -1,6 +1,7 @@
 2.8.0 "A New Day"
 =====================
 
+    ADDED: "Date Format String" that can override date format set by locale that is used in PanelView
     ADDED: "Expanding tabs" and "Close tab by double click" options
     ADDED: Active panel follows Embedded Terminal working directory
     ADDED: Closing a tab can be quickly undone with a hotkey or a menu entry. A menu can reopen recently closed tabs.

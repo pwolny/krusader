@@ -39,6 +39,8 @@
 
 
 ////////////////////////[Look&Feel]
+// Date Format String for date display///////
+#define _DateFormatStringDefault QString("yyyy-MM-dd_hh:mm:ss")
 // Filelist Font ///////
 #define _FilelistFont   QFontDatabase::systemFont(QFontDatabase::GeneralFont)
 // Warn On Exit ////////
